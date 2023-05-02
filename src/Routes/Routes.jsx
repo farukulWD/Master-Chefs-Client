@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import Home from "../Pages/Home";
 import ChefDetails from "../Pages/ChefDetails";
 import ChefLayout from "../Layout/ChefLayout";
+import PrivetRoute from "./PrivetRoute";
 
 const router = createBrowserRouter([
     {
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
         children:[
             {
                 path:":id",
-                element:<ChefDetails></ChefDetails>,
+                element:<PrivetRoute><ChefDetails></ChefDetails></PrivetRoute>,
                 loader:({params})=>fetch(`https://master-chefs-server-q15j2b6rh-farukulwd.vercel.app/chefs/${params.id}`)
             }
         ]
