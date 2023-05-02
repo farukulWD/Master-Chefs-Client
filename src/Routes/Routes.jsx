@@ -26,7 +26,7 @@ const router = createBrowserRouter([
             {
                 path:":id",
                 element:<PrivetRoute><ChefDetails></ChefDetails></PrivetRoute>,
-                loader:({params})=>fetch(`https://master-chefs-server-q15j2b6rh-farukulwd.vercel.app/chefs/${params.id}`)
+                loader:({params})=>fetch(`https://master-chefs-server-farukulwd.vercel.app/chefs/${params.id}`)
             }
         ]
     }
