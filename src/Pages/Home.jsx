@@ -10,7 +10,7 @@ const Home = () => {
             {/* Our chefs section */}
             <section className='py-5 px-4'>
             <h2 className='text-center text-4xl font-bold'>Our chefs</h2>
-            <div className='my-4 grid grid-cols-3 gap-5'>
+            <div className='my-4 grid md:grid-cols-3 gap-5'>
                 {
                     chefs.map(chef=><ChefsCard key={chef.id}
                     chef={chef}></ChefsCard>)

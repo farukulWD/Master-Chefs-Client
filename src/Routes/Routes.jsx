@@ -4,11 +4,13 @@ import Home from "../Pages/Home";
 import ChefDetails from "../Pages/ChefDetails";
 import ChefLayout from "../Layout/ChefLayout";
 import PrivetRoute from "./PrivetRoute";
+import ErrorPage from "../Pages/ErrorPage";
 
 const router = createBrowserRouter([
     {
         path:"/",
         element:<Main></Main>,
+        errorElement: <ErrorPage />,
         children:[
             {
                 path:"/",
