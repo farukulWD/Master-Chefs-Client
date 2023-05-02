@@ -35,7 +35,7 @@ const NavigationBar = () => {
               </li>
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <a className=" font-bold normal-case text-xl text-primary hidden md:block">Master Chefs</a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -48,7 +48,7 @@ const NavigationBar = () => {
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn">Get started</a>
+          <a className="btn btn-primary">Get started</a>
         </div>
       </div>
     </div>

@@ -9,7 +9,8 @@ const router = createBrowserRouter([
         children:[
             {
                 path:"/",
-                element:<Home></Home>
+                element:<Home></Home>,
+                loader:()=> fetch("https://master-chefs-server-farukulwd.vercel.app/chefs")
             }
         ]
     }
