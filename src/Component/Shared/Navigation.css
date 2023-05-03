@@ -1,0 +1,12 @@
+.tab {
+    width: 100%;
+    padding: 20px 0;
+    background:  #343837;
+    color: white;
+    overflow: hidden;
+    text-align: center;
+    flex-grow: 1;
+    cursor: pointer;
+    position: relative;
+    text-decoration: none;
+  }

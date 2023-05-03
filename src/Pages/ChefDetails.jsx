@@ -11,10 +11,10 @@ const ChefDetails = () => {
     <div>
       <ChefHeader></ChefHeader>
       <section className="px-4 my-6  mx-auto">
-        <h2 className="text-center text-warning text-6xl font-bold mt-10 mb-7 ">
+        <h2 className="text-center text-warning text-3xl md:text-6xl font-bold mt-10 mb-7 ">
           My Awesome Recipes
         </h2>
-        <p className="text-center mx-auto w-[50%] mb-16">
+        <p className="text-center mx-auto md:w-[50%] mb-16">
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Recusandae
           saepe aliquam sint. Eos sapiente, eligendi molestias vel corrupti
           obcaecati deserunt!

@@ -10,10 +10,10 @@ const ChefsCard = ({ chef }) => {
 
   return (
     <div>
-      <div className="card w-full glass">
+      <div className="card w-80 md:w-full mx-auto glass">
         <figure>
-          <LazyLoad  threshold={0.95}>
-          <img src={picture} alt="chef!" />
+          <LazyLoad  height={350} width={500} threshold={0.95}>
+          <img  src={picture} alt="chef!" />
           </LazyLoad>
         </figure>
         <div className="card-body">

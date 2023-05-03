@@ -6,8 +6,8 @@ const ChefHeader = () => {
     const chef = useLoaderData();
     const {picture,name,chef_description,years_of_experience,number_of_recipes,likes}=chef;
   return (
-    <div className="px-4">
-      <div className="hero  md:min-h-screen hero-overlay bg-opacity-10">
+    <div className="md:px-4">
+      <div className="hero   md:min-h-screen hero-overlay bg-opacity-10">
         <div className="hero-content flex-col lg:flex-row-reverse">
           <img
             src={picture}
@@ -15,7 +15,7 @@ const ChefHeader = () => {
           />
           <div>
             <h1 className=" mb-5 text-5xl text-warning font-bold">{name}</h1>
-            <p className="py-6 w-[450px]">
+            <p className="py-6  md:w-[450px]">
               {chef_description}
             </p>
             <p className="">

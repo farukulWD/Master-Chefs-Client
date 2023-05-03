@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
+import  "./Navigation.css";
 
 const NavigationBar = () => {
   const { user, logOut } = useContext(AuthContext);
@@ -16,7 +17,7 @@ const NavigationBar = () => {
 
   return (
     <div>
-      <div className="navbar px-4 bg-base-100">
+      <div className="navbar md:px-4 bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -40,14 +41,30 @@ const NavigationBar = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link className="hover:bg-warning hover:text-white" to="/">
+                <NavLink
+                  to="/"
+                  style={({ isActive, isPending }) => {
+                    return {
+                      fontWeight: isActive ? "" : "",
+                      color: isPending ? "red" : "black",
+                    };
+                  }}
+                >
                   Home
-                </Link>
+                </NavLink>
               </li>
               <li>
-                <Link className="hover:bg-warning hover:text-white" to="/blog">
+                <NavLink
+                  to="/blog"
+                  style={({ isActive, isPending }) => {
+                    return {
+                      fontWeight: isActive ? "bold" : "",
+                      color: isPending ? "red" : "black",
+                    };
+                  }}
+                >
                   Blog
-                </Link>
+                </NavLink>
               </li>
             </ul>
           </div>
@@ -58,14 +75,30 @@ const NavigationBar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link className="hover:bg-warning hover:text-white" to="/">
+              <NavLink
+                to="/"
+                style={({ isActive, isPending }) => {
+                  return {
+                    fontWeight: isActive ? "bold" : "",
+                    color: isPending ? "red" : "black",
+                  };
+                }}
+              >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className="hover:bg-warning hover:text-white" to="/blog">
+              <NavLink
+                to="/blog"
+                style={({ isActive, isPending }) => {
+                  return {
+                    fontWeight: isActive ? "bold" : "",
+                    color: isPending ? "red" : "black",
+                  };
+                }}
+              >
                 Blog
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </div>
