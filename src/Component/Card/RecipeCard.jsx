@@ -15,6 +15,7 @@ const RecipeCard = ({ recipe }) => {
       icon: 'success',
       title: 'This Recipe added bookmark',
       showConfirmButton: false,
+      showCancelButton:true,
       timer: 1500
     })
     

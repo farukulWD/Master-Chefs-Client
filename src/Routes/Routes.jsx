@@ -5,6 +5,9 @@ import ChefDetails from "../Pages/ChefDetails";
 import ChefLayout from "../Layout/ChefLayout";
 import PrivetRoute from "./PrivetRoute";
 import ErrorPage from "../Pages/ErrorPage";
+import Login from "../Layout/Login/Login";
+import LoginLayout from "../Layout/Login/LoginLayout";
+import Register from "../Layout/Login/Register";
 
 const router = createBrowserRouter([
     {
@@ -27,6 +30,20 @@ const router = createBrowserRouter([
                 path:":id",
                 element:<PrivetRoute><ChefDetails></ChefDetails></PrivetRoute>,
                 loader:({params})=>fetch(`https://master-chefs-server-farukulwd.vercel.app/chefs/${params.id}`)
+            }
+        ]
+    },
+    {
+        path:"user",
+        element:<LoginLayout></LoginLayout>,
+        children:[
+            {
+                path:"login",
+                element:<Login></Login>
+            },
+            {
+                path:"register",
+                element:<Register></Register>
             }
         ]
     }
