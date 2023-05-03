@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Register = () => {
-    const {createUser}= useContext(AuthContext)
+    const {createUser,updateNameProfile}= useContext(AuthContext)
 
     const handleRegister=(event)=>{
         event.preventDefault()
@@ -22,7 +22,7 @@ const Register = () => {
         .catch(error=>{
             console.log(error.message);
         })
-        console.log(name,email,password,photo);
+        updateNameProfile(name,photo)
     }
 
 
@@ -44,6 +44,7 @@ const Register = () => {
                   placeholder="Name"
                   className="input input-bordered"
                   name="name"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -55,6 +56,7 @@ const Register = () => {
                   placeholder="email"
                   name="email"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -66,6 +68,7 @@ const Register = () => {
                   placeholder="password"
                   name="password"
                   className="input input-bordered"
+                  required
                 />
               </div>
               <div className="form-control">
@@ -77,6 +80,7 @@ const Register = () => {
                   placeholder="Photo URL"
                   name="photo"
                   className="input input-bordered"
+                  required
                 />
                 <label className="label">
                   <p href="#" className="label-text-alt link link-hover">

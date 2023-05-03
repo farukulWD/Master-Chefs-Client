@@ -24,11 +24,11 @@ const router = createBrowserRouter([
     },
     {
         path:'chef',
-        element:<ChefLayout></ChefLayout>,
+        element:<PrivetRoute><ChefLayout></ChefLayout></PrivetRoute>,
         children:[
             {
                 path:":id",
-                element:<PrivetRoute><ChefDetails></ChefDetails></PrivetRoute>,
+                element:<ChefDetails></ChefDetails>,
                 loader:({params})=>fetch(`https://master-chefs-server-farukulwd.vercel.app/chefs/${params.id}`)
             }
         ]
