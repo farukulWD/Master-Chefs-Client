@@ -54,7 +54,7 @@ const NavigationBar = () => {
             <Link to='/'>Home</Link>
             </li>
             <li>
-              <a>Blog</a>
+            <Link to='/blog'>Blog</Link>
             </li>
           </ul>
         </div>
