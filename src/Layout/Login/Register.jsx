@@ -91,16 +91,6 @@ const Register = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
               </div>
-              <div>
-                <div className="text-center my-6">
-                <h4>OR</h4>
-                <h4>Login with</h4>
-                </div>
-                <div className="flex gap-5 justify-center items-center">
-                    <span><FaGoogle className="text-4xl"></FaGoogle></span>
-                    <span><FaGithub className="text-4xl "></FaGithub></span>
-                </div>
-              </div>
             </form>
           </div>
         </div>

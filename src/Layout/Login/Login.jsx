@@ -4,7 +4,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Login = () => {
-    const {loginWithEmail}=useContext(AuthContext)
+    const {loginWithEmail,loginWithGoogle,loginWithGithub}=useContext(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname ||'/';
@@ -24,8 +24,30 @@ const Login = () => {
         .catch(error=>{
             console.log(error.message);
         })
-        
-    }
+      }
+      
+      const handleGoogleLogin = ()=>{
+        loginWithGoogle()
+        .then(result=>{
+          const getUser = result.message;
+          console.log(getUser);
+          navigate(from)
+        })
+        .catch(error=>{
+          console.log(error.message);
+        })
+      }
+      const handleGithubLogin = ()=>{
+        loginWithGithub()
+        .then(result=>{
+          const getUser = result.message;
+          console.log(getUser);
+          navigate(from)
+        })
+        .catch(error=>{
+          console.log(error.message);
+        })
+      }
   return (
     <div>
       <div className="hero md:min-h-screen bg-base-200">
@@ -71,8 +93,8 @@ const Login = () => {
                 <h4>Login with</h4>
                 </div>
                 <div className="flex gap-5 justify-center items-center">
-                    <span><FaGoogle className="text-4xl"></FaGoogle></span>
-                    <span><FaGithub className="text-4xl "></FaGithub></span>
+                    <span onClick={handleGoogleLogin} className="cursor-pointer"><FaGoogle className="text-4xl"></FaGoogle></span>
+                    <span onClick={handleGithubLogin} className="cursor-pointer"><FaGithub className="text-4xl "></FaGithub></span>
                 </div>
               </div>
             </form>
