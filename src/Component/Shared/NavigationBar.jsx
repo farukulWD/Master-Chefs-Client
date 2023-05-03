@@ -1,10 +1,21 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 import  "./Navigation.css";
 
 const NavigationBar = () => {
   const { user, logOut } = useContext(AuthContext);
+  
+  const [isHover, setIsHover] = useState(false);
+
+  const handleMouseHover = ()=>{
+    setIsHover(true)
+  }
+  const handleMouseOut = ()=>{
+    setIsHover(false)
+  }
+
+
   const handleSignOut = () => {
     logOut()
       .then((result) => {
@@ -14,6 +25,7 @@ const NavigationBar = () => {
         console.log(error);
       });
   };
+
 
   return (
     <div>
@@ -102,13 +114,20 @@ const NavigationBar = () => {
             </li>
           </ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end relative">
           {user && (
             <div>
-              <img
+              <img onMouseOver={handleMouseHover}
+              onMouseOut={handleMouseOut}
                 className={`w-10 rounded-full mx-2`}
                 src={user.photoURL}
               ></img>
+              <div className=" rounded-lg">
+                {
+                  isHover ? <p className="text-black absolute top-13 right-15 bg-base-200 py-2 px-2 ">{user&&user.displayName}</p>:""
+
+                }
+              </div>
             </div>
           )}
           {user ? (

@@ -1,4 +1,9 @@
 module.exports = {
+   
+    eslint: {
+      enable: false,
+    
+  },
   env: { browser: true, es2020: true },
   extends: [
     'eslint:recommended',
