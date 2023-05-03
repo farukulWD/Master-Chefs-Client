@@ -30,7 +30,6 @@ const Login = () => {
         loginWithGoogle()
         .then(result=>{
           const getUser = result.message;
-          console.log(getUser);
           navigate(from)
         })
         .catch(error=>{
@@ -53,7 +52,7 @@ const Login = () => {
       <div className="hero md:min-h-screen bg-base-200">
         <div className="hero-content flex-col">
           <div className="text-center ">
-            <h1 className="text-3xl font-bold">Please Login</h1>
+            <h1 className="text-3xl font-bold text-warning">Please Login</h1>
           </div>
           <div className="card flex-shrink-0 w-full md:w-[400px] max-w-lg shadow-2xl">
             <form onSubmit={handleLogin} className="card-body">
@@ -78,19 +77,19 @@ const Login = () => {
                   name="password"
                   className="input input-bordered"
                 />
-                <label className="label">
-                  <p href="#" className="label-text-alt link link-hover">
-                  Are you new here ? <Link to="/user/register">Register</Link>
+                <label className="label my-4 font-semibold">
+                  <p href="#" className="label-text-alt text-xl">
+                  Are you new here ? <Link className="text-warning" to="/user/register">Register</Link>
                   </p>
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Login</button>
+                <button className="btn btn-warning">Login</button>
               </div>
               <div>
                 <div className="text-center my-6">
-                <h4>OR</h4>
-                <h4>Login with</h4>
+                <h4 className="text-xl">OR</h4>
+                <h4 className="text-lg text-warning">Login with</h4>
                 </div>
                 <div className="flex gap-5 justify-center items-center">
                     <span onClick={handleGoogleLogin} className="cursor-pointer"><FaGoogle className="text-4xl"></FaGoogle></span>

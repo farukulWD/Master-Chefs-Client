@@ -31,7 +31,7 @@ const Register = () => {
       <div className="hero md:min-h-screen bg-base-200">
         <div className="hero-content flex-col">
           <div className="text-center ">
-            <h1 className="text-3xl font-bold">Please Register</h1>
+            <h1 className="text-3xl font-bold text-warning">Please Register</h1>
           </div>
           <div className="card flex-shrink-0 w-full md:w-[400px] max-w-lg shadow-2xl">
             <form onSubmit={handleRegister} className="card-body">
@@ -83,13 +83,13 @@ const Register = () => {
                   required
                 />
                 <label className="label">
-                  <p href="#" className="label-text-alt link link-hover">
-                    Already You have account ? <Link to="/user/login">Login</Link>
+                  <p className="label-text-alt text-xl">
+                    Already You have account ? <Link className="text-warning" to="/user/login">Login</Link>
                   </p>
                 </label>
               </div>
               <div className="form-control mt-6">
-                <button className="btn btn-primary">Register</button>
+                <button className="btn btn-warning">Register</button>
               </div>
             </form>
           </div>

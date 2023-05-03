@@ -3,19 +3,20 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const NavigationBar = () => {
-  const {user,logOut}=useContext(AuthContext);
-  const handleSignOut=()=>{
+  const { user, logOut } = useContext(AuthContext);
+  const handleSignOut = () => {
     logOut()
-    .then(result=>{
-      console.log(result);
-    })
-    .catch(error=>{
-      console.log(error);
-    })
-  }
+      .then((result) => {
+        console.log(result);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar px-4 bg-base-100">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -39,28 +40,56 @@ const NavigationBar = () => {
               className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <Link to='/'>Home</Link>
+                <Link className="hover:bg-warning hover:text-white" to="/">
+                  Home
+                </Link>
               </li>
               <li>
-                <a>Blog</a>
+                <Link className="hover:bg-warning hover:text-white" to="/blog">
+                  Blog
+                </Link>
               </li>
             </ul>
           </div>
-          <a className=" font-bold normal-case text-xl text-primary hidden md:block">Master Chefs</a>
+          <a className=" font-bold normal-case text-xl lg:text-3xl text-warning hidden md:block">
+            Master Chefs
+          </a>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-            <Link to='/'>Home</Link>
+              <Link className="hover:bg-warning hover:text-white" to="/">
+                Home
+              </Link>
             </li>
             <li>
-            <Link to='/blog'>Blog</Link>
+              <Link className="hover:bg-warning hover:text-white" to="/blog">
+                Blog
+              </Link>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          {user ? <Link onClick={handleSignOut} className="btn btn-primary mr-2">Log out</Link>:
-          <Link  to='/user/login' className="btn btn-primary mr-2">Login</Link>}
+          {user && (
+            <div>
+              <img
+                className={`w-10 rounded-full mx-2`}
+                src={user.photoURL}
+              ></img>
+            </div>
+          )}
+          {user ? (
+            <Link
+              onClick={handleSignOut}
+              className="btn btn-warning mr-2 text-white"
+            >
+              Log out
+            </Link>
+          ) : (
+            <Link to="/user/login" className="btn btn-warning mr-2 text-white">
+              Login
+            </Link>
+          )}
         </div>
       </div>
     </div>
