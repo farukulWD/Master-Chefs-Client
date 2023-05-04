@@ -1,42 +1,71 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Register = () => {
-    const {createUser, updateNameProfile}= useContext(AuthContext)
-    const [errorMessage, setErrorMessage] = useState('');
-    console.log(updateNameProfile);
+  const { createUser, updateNameProfile } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState("");
 
-    const handleRegister=(event)=>{
-        event.preventDefault()
-        const form = event.target;
-        const name = form.name.value;
-        const email = form.email.value;
-        const password = form.password.value;
-        const photo = form.photo.value;
-        form.reset()
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [displayName, setDisplayName] = useState("");
+  const [photoURL, setPhotoURL] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
 
-      if (password.length < 6) {
-        return setErrorMessage("Your password to short")
+  // const handleEmail=(event)=>{
+  //   const getEmail = event.target.value;
+  //   setEmail(getEmail)
+  // }
+  
 
-        
-      }
-      console.log(errorMessage);
+ 
 
 
-        createUser(email,password)
-        .then(result=>{
-            const createdUser = result.user;
-            console.log(createdUser);
-        })
-        .catch(error=>{
-            console.log(error.message);
-            setErrorMessage(error.message)
-        })
-        updateNameProfile(name,photo)
+  const handleRegister = (event) => {
+    setErrorMessage("");
+    setPasswordError("");
+    event.preventDefault();
+    const form = event.target;
+
+
+    setEmailError("");
+    if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+      setEmailError("Please provide valid email");
+      return
     }
 
+    
+    if (!/.{8,}/.test(password)) {
+      setPasswordError("At Least 8 charter");
+      return
+    } else if (!/(?=.*?[0-9])/.test(password)) {
+      setPasswordError("At Least one digit");
+      return
+    } else if (!/(?=.*?[A-Z])/.test(password)) {
+      setPasswordError("At least one upper case");
+      return
+    }else{
+      createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        console.log(createdUser);
+        updateNameProfile(displayName, photoURL);
+      })
+      .catch((error) => {
+        console.log(error.message);
+        setErrorMessage(error.message);
+      });
+    }
+    
+    
+    
+    
+
+    
+      form.reset();
+  };
 
   return (
     <div>
@@ -55,6 +84,8 @@ const Register = () => {
                   type="text"
                   placeholder="Name"
                   className="input input-bordered"
+                  value={displayName}
+                  onChange={(event) => setDisplayName(event.target.value)}
                   name="name"
                   required
                 />
@@ -64,12 +95,16 @@ const Register = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  type="email"
-                  placeholder="email"
-                  name="email"
                   className="input input-bordered"
-                  required
+                  type="email"
+                  value={email}
+                  onChange={(event) => setEmail(event.target.value)}
                 />
+                <label className="label">
+                  <small className="label-text-alt text-red-500">
+                    {emailError}
+                  </small>
+                </label>
               </div>
               <div className="form-control">
                 <label className="label">
@@ -79,9 +114,16 @@ const Register = () => {
                   type="password"
                   placeholder="password"
                   name="password"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
                   className="input input-bordered"
                   required
                 />
+                <label className="label">
+                  <small className="label-text-alt text-red-500">
+                    {passwordError}
+                  </small>
+                </label>
               </div>
               <div className="form-control">
                 <label className="label">
@@ -91,9 +133,12 @@ const Register = () => {
                   type="text"
                   placeholder="Photo URL"
                   name="photo"
+                  value={photoURL}
+                  onChange={(event) => setPhotoURL(event.target.value)}
                   className="input input-bordered"
                   required
                 />
+
                 <label className="label">
                   <p className="label-text-alt text-red-500  text-xl">
                     {errorMessage}
@@ -101,7 +146,10 @@ const Register = () => {
                 </label>
                 <label className="label">
                   <p className="label-text-alt text-xl">
-                    Already You have account ? <Link className="text-warning" to="/user/login">Login</Link>
+                    Already You have account ?{" "}
+                    <Link className="text-warning" to="/user/login">
+                      Login
+                    </Link>
                   </p>
                 </label>
               </div>

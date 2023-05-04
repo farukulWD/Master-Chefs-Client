@@ -25,7 +25,7 @@ const RecipeCard = ({ recipe }) => {
     <>
 
       <div className="card md:card-side my-6 bg-red-100 shadow-xl">
-        <img className="md:w-72 p-3 rounded-lg" src={recipe_img} alt="recipe" />
+        <img className="md:w-72 p-3 rounded-xl" src={recipe_img} alt="recipe" />
 
         <div className="card-body">
           <h2 className="card-title text-center text-black text-2xl">

@@ -20,8 +20,6 @@ const Login = () => {
         form.reset()
         loginWithEmail(email,password)
         .then(result=>{
-            const loggedUser = result.user;
-            
             navigate(from)
         })
         .catch(error=>{
