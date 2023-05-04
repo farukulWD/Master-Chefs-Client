@@ -81,7 +81,7 @@ const NavigationBar = () => {
             </ul>
           </div>
           <a className=" font-bold normal-case text-xl lg:text-3xl text-warning hidden md:block">
-            Master Chefs
+            Master Chefs Chines
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
