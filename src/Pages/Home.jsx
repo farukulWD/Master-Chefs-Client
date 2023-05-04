@@ -4,6 +4,7 @@ import ChefsCard from "../Component/Card/ChefsCard";
 import { Circles } from "react-loader-spinner";
 import Contact from "../Component/Contact";
 import Client from "../Component/Client";
+import Header from "../Component/Shared/Header";
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -38,6 +39,7 @@ const Home = () => {
         </div>
       ) : (
         <>
+        <Header></Header>
           <section className="py-5 md:px-4">
             <h2 className="text-center text-warning text-3xl md:text-6xl font-bold mt-10 mb-7">
               Our chefs

@@ -4,7 +4,7 @@ import NavigationBar from "./Navigationbar";
 const Header = () => {
   return (
     <div>
-      <NavigationBar></NavigationBar>
+      {/* <NavigationBar></NavigationBar> */}
       <div className="md:px-4 mt-3">
         <div
           className=" hero h-96 md:min-h-screen"
