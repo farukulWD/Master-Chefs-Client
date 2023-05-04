@@ -98,6 +98,7 @@ const Register = () => {
                   className="input input-bordered"
                   type="email"
                   value={email}
+                  placeholder="Email"
                   onChange={(event) => setEmail(event.target.value)}
                 />
                 <label className="label">
