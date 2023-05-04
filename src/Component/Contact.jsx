@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Contact = () => {
   return (
@@ -55,12 +56,13 @@ const Contact = () => {
               placeholder="Message"
             ></textarea>
           </div>
+          <Link>
           <button
             type="submit"
-            className="w-full px-6 py-2.5 bg-warning text-white  leading-tight uppercase rounded shadow-md hover:shadow-lg focus:bg-blue-700  focus:outline-none focus:ring-0 text-lg transition duration-150 ease-in-out"
+            className="w-full px-6 py-2.5 bg-warning text-white  leading-tight uppercase rounded shadow-md hover:shadow-lg   focus:outline-none focus:ring-0 text-lg transition duration-150 ease-in-out"
           >
             Send
-          </button>
+          </button></Link>
         </form>
       </div>
     </section>

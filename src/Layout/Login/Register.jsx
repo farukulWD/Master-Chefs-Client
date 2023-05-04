@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Register = () => {
-    const {createUser,updateNameProfile}= useContext(AuthContext)
+    const {createUser, updateNameProfile}= useContext(AuthContext)
+    const [errorMessage, setErrorMessage] = useState('');
+    console.log(updateNameProfile);
 
     const handleRegister=(event)=>{
         event.preventDefault()
@@ -14,6 +16,15 @@ const Register = () => {
         const password = form.password.value;
         const photo = form.photo.value;
         form.reset()
+
+      if (password.length < 6) {
+        return setErrorMessage("Your password to short")
+
+        
+      }
+      console.log(errorMessage);
+
+
         createUser(email,password)
         .then(result=>{
             const createdUser = result.user;
@@ -21,6 +32,7 @@ const Register = () => {
         })
         .catch(error=>{
             console.log(error.message);
+            setErrorMessage(error.message)
         })
         updateNameProfile(name,photo)
     }
@@ -82,6 +94,11 @@ const Register = () => {
                   className="input input-bordered"
                   required
                 />
+                <label className="label">
+                  <p className="label-text-alt text-red-500  text-xl">
+                    {errorMessage}
+                  </p>
+                </label>
                 <label className="label">
                   <p className="label-text-alt text-xl">
                     Already You have account ? <Link className="text-warning" to="/user/login">Login</Link>

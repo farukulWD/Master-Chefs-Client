@@ -41,14 +41,22 @@ const Home = () => {
         <>
         <Header></Header>
           <section className="py-5 md:px-4">
-            <h2 className="text-center text-warning text-3xl md:text-6xl font-bold mt-10 mb-7">
+            
+            <div className="text-center max-w-xl mx-auto">
+              <h1 className="text-6xl text-warning md:text-7xl font-bold mb-5 ">
               Our chefs
-            </h2>
-            <p className="text-center mx-auto md:w-[50%] mb-16">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-              Recusandae saepe aliquam sint. Eos sapiente, eligendi molestias
-              vel corrupti obcaecati deserunt!
-            </p>
+              </h1>
+              <h3 className="text-xl mb-5 font-light">
+              Our passionate culinary team is made up of innovative and experienced professionals with years of experience in foodservice. Their work combines food science, technology and the culinary arts to imagine the future of food.
+              </h3>
+              <div className="text-center mb-10">
+                <span className="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                <span className="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                <span className="inline-block w-40 h-1 rounded-full bg-indigo-500"></span>
+                <span className="inline-block w-3 h-1 rounded-full bg-indigo-500 ml-1"></span>
+                <span className="inline-block w-1 h-1 rounded-full bg-indigo-500 ml-1"></span>
+              </div>
+            </div>
 
             <div className="my-4 grid md:grid-cols-3 gap-5 md:gap-10">
               {chefs.map((chef) => (

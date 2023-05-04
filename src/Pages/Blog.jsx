@@ -1,9 +1,8 @@
 import React from "react";
-import NavigationBar from "../Component/Shared/Navigationbar";
 import Footer from "../Component/Shared/Footer";
 import Pdf from "react-to-pdf";
-import Header from "../Component/Shared/Header";
 import BlogHeader from "../Component/Shared/BlogHeader";
+import NavigationBar from "../Component/Shared/NavigationBar";
 
 const ref = React.createRef();
 
