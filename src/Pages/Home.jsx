@@ -46,7 +46,7 @@ const Home = () => {
               <h1 className="text-6xl text-warning md:text-7xl font-bold mb-5 ">
               Our chefs
               </h1>
-              <h3 className="text-xl mb-5 font-light">
+              <h3 className="text-xl px-1 mb-5 font-light">
               Our passionate culinary team is made up of innovative and experienced professionals with years of experience in foodservice. Their work combines food science, technology and the culinary arts to imagine the future of food.
               </h3>
               <div className="text-center mb-10">
