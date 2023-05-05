@@ -25,19 +25,7 @@ const Home = () => {
 
   return (
     <div>
-      {isLoading ? (
-        <div className="flex justify-center mt-10">
-          <Circles
-            height="80"
-            width="80"
-            color="#4fa94d"
-            ariaLabel="circles-loading"
-            wrapperStyle={{}}
-            wrapperclassName=""
-            visible={true}
-          />
-        </div>
-      ) : (
+      
         <>
         <Header></Header>
           <section className="py-5 md:px-4">
@@ -73,7 +61,7 @@ const Home = () => {
 
           
         </>
-      )}
+      
     </div>
   );
 };
