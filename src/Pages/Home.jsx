@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
 import ChefsCard from "../Component/Card/ChefsCard";
 import { Circles } from "react-loader-spinner";
 import Contact from "../Component/Contact";
 import Client from "../Component/Client";
 import Header from "../Component/Shared/Header";
+
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);
