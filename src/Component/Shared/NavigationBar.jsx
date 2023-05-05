@@ -55,12 +55,7 @@ const NavigationBar = () => {
               <li>
                 <NavLink
                   to="/"
-                  style={({ isActive, isPending }) => {
-                    return {
-                      fontWeight: isActive ? "" : "",
-                      color: isPending ? "red" : "black",
-                    };
-                  }}
+                  className={({isActive})=> isActive?"bg-warning":""}
                 >
                   Home
                 </NavLink>
@@ -68,12 +63,7 @@ const NavigationBar = () => {
               <li>
                 <NavLink
                   to="/blog"
-                  style={({ isActive, isPending }) => {
-                    return {
-                      fontWeight: isActive ? "bold" : "",
-                      color: isPending ? "red" : "black",
-                    };
-                  }}
+                  className={({isActive})=> isActive?"bg-warning":""}
                 >
                   Blog
                 </NavLink>
@@ -89,12 +79,7 @@ const NavigationBar = () => {
             <li>
               <NavLink
                 to="/"
-                style={({ isActive, isPending }) => {
-                  return {
-                    fontWeight: isActive ? "bold" : "",
-                    color: isPending ? "red" : "black",
-                  };
-                }}
+                className={({isActive})=> isActive?"bg-warning":""}
               >
                 Home
               </NavLink>
@@ -102,12 +87,7 @@ const NavigationBar = () => {
             <li>
               <NavLink
                 to="/blog"
-                style={({ isActive, isPending }) => {
-                  return {
-                    fontWeight: isActive ? "bold" : "",
-                    color: isPending ? "red" : "black",
-                  };
-                }}
+                className={({isActive})=> isActive?"bg-warning":""}
               >
                 Blog
               </NavLink>
