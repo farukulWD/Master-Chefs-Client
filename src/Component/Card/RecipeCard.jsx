@@ -7,7 +7,7 @@ import Swal from "sweetalert2";
 
 const RecipeCard = ({ recipe }) => {
   const { recipe_name, recipe_img, ingredients, instructions, rating } = recipe;
-  const [btnDisabale, setBtnDisable] = useState(true);
+  const [btnDisable, setBtnDisable] = useState(false);
 
   const handleToast =()=>{
     Swal.fire({
@@ -57,12 +57,12 @@ const RecipeCard = ({ recipe }) => {
                 fullSymbol={<FaStar className="text-warning"></FaStar>}
               /> <span>{rating.number}</span>
               </div>
-              {btnDisabale && <button onClick={()=>{
-                setBtnDisable(!btnDisabale)
+              {<button  onClick={()=>{
+                setBtnDisable(true)
                 handleToast()
-              }} className="btn btn-warning my-8">
+              }} className="btn btn-warning my-8" disabled={btnDisable}>
                 add bookmark <FaBookmark className="ml-2"></FaBookmark>
-              </button>}
+               </button>}
             </div>
           </div>
         </div>
