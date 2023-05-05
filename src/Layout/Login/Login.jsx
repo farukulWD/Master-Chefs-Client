@@ -6,6 +6,7 @@ import { AuthContext } from "../../Context/AuthProvider";
 const Login = () => {
     const {loginWithEmail,loginWithGoogle,loginWithGithub}=useContext(AuthContext)
     const [error, setError]=useState('')
+    const[success,setSuccess]=useState('')
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -17,14 +18,15 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        form.reset()
+        form.reset();
         loginWithEmail(email,password)
         .then(result=>{
+            setSuccess("Login SuccessFully")
             navigate(from)
         })
         .catch(error=>{
             const errorMessage =(error.message);
-            setError(errorMessage);
+            setError(errorMessage.slice(22,-2));
 
         })
       }
@@ -33,9 +35,11 @@ const Login = () => {
         loginWithGoogle()
         .then(result=>{
           const getUser = result.message;
+          setSuccess("Login SuccessFully")
           navigate(from)
         })
         .catch(error=>{
+          setError(error.message)
           
         })
       }
@@ -43,10 +47,12 @@ const Login = () => {
         loginWithGithub()
         .then(result=>{
           const getUser = result.message;
+          setSuccess("Login SuccessFully")
           
           navigate(from)
         })
         .catch(error=>{
+          setError(error.message)
           
         })
       }
@@ -82,7 +88,10 @@ const Login = () => {
                 />
                 <label className="label my-4 font-semibold">
                   <p href="#" className="label-text-alt text-red-500 text-xl">
-                  {error && "PassWord or email wrong"}
+                  {error}
+                  </p>
+                  <p href="#" className="label-text-alt text-success text-xl">
+                  {success}
                   </p>
                 </label>
                 <label className="label my-4 font-semibold">

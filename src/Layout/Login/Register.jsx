@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { FaGithub, FaGoogle } from "react-icons/fa";
+
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Register = () => {
   const { createUser, updateNameProfile } = useContext(AuthContext);
   const [errorMessage, setErrorMessage] = useState("");
+  const[success,setSuccess]=useState('')
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -14,57 +15,44 @@ const Register = () => {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
-  // const handleEmail=(event)=>{
-  //   const getEmail = event.target.value;
-  //   setEmail(getEmail)
-  // }
-  
-
- 
-
-
   const handleRegister = (event) => {
     setErrorMessage("");
     setPasswordError("");
     event.preventDefault();
     const form = event.target;
-
+    console.log(form);
 
     setEmailError("");
     if (!/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
       setEmailError("Please provide valid email");
-      return
+      return;
     }
 
-    
     if (!/.{8,}/.test(password)) {
       setPasswordError("At Least 8 charter");
-      return
+      return;
     } else if (!/(?=.*?[0-9])/.test(password)) {
       setPasswordError("At Least one digit");
-      return
+      return;
     } else if (!/(?=.*?[A-Z])/.test(password)) {
       setPasswordError("At least one upper case");
-      return
-    }else{
+      return;
+    } else {
       createUser(email, password)
-      .then((result) => {
-        const createdUser = result.user;
-        console.log(createdUser);
-        updateNameProfile(displayName, photoURL);
-      })
-      .catch((error) => {
-        console.log(error.message);
-        setErrorMessage(error.message);
-      });
+        .then((result) => {
+          const createdUser = result.user;
+          updateNameProfile(displayName, photoURL);
+          setSuccess("Register has been successfully you can login")
+        })
+        .catch((error) => {
+          console.log(error.message);
+          setErrorMessage(error.message);
+        });
     }
-    
-    
-    
-    
-
-    
-      form.reset();
+    setDisplayName('')
+    setEmail('')
+    setPassword('')
+    setPhotoURL('')
   };
 
   return (
@@ -87,7 +75,6 @@ const Register = () => {
                   value={displayName}
                   onChange={(event) => setDisplayName(event.target.value)}
                   name="name"
-                  required
                 />
               </div>
               <div className="form-control">
@@ -95,11 +82,12 @@ const Register = () => {
                   <span className="label-text">Email</span>
                 </label>
                 <input
-                  className="input input-bordered"
                   type="email"
-                  value={email}
                   placeholder="Email"
+                  className="input input-bordered"
+                  value={email}
                   onChange={(event) => setEmail(event.target.value)}
+                  name="email"
                 />
                 <label className="label">
                   <small className="label-text-alt text-red-500">
@@ -137,12 +125,14 @@ const Register = () => {
                   value={photoURL}
                   onChange={(event) => setPhotoURL(event.target.value)}
                   className="input input-bordered"
-                  required
                 />
 
                 <label className="label">
-                  <p className="label-text-alt text-red-500  text-xl">
-                    {errorMessage}
+                  <p className="label-text-alt text-red-500 text-lg">
+                    {errorMessage.slice(22,-2)}
+                  </p>
+                  <p className="label-text-alt text-success text-lg">
+                    {success}
                   </p>
                 </label>
                 <label className="label">
